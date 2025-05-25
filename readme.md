@@ -131,3 +131,7 @@
         </div>
     </form>
 ```
+# Result 👇
+<div align = "center">
+  <img src = "https://github.com/RouthKiranBabu/Assignment-2-HTML-CSS-Based-Web-Form-Manual-Testing-Scenarios/blob/main/result.gif"/>
+</div>
