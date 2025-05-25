@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ Assignment 2: HTML/CSS Based Web Form + Manual Testing Scenarios</title>
+    
+    <!-- 
+    1. './style.css' is the location where the css file exist.
+        helps in providing link so the code does not looks complex.
+      -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Go it from the google fonts to style the letters in page -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=WDXL+Lubrifont+TC&display=swap" rel="stylesheet">
+
+    <!-- For Dark Mode -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=dark_mode" />
+</head>
+<script>
+    function changeMode(){
+        // Getting elements by id value for modifying
+        const body = document.getElementById("_body");
+        const formcolor = document.getElementById("form");
+        const text = document.getElementById("changemode");
+        /*The below code toggles the style for 
+        1. Background of body [white <-> black]
+        2. Text color in the form [white <-> black]
+        3. Text on button between [Light mode <-> dark mode]*/ 
+        if (body.style.backgroundColor === "white"){
+            body.style.backgroundColor = "black";
+            formcolor.style.color = "white";
+            text.innerText = "Light Mode";
+        }
+        else{
+            body.style.backgroundColor = "white";
+            formcolor.style.color = "black";
+            text.innerText = "Dark Mode";
+        }
+    }
+
+    // This code need to be remembered only need to check which id to provide and what function to be called
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("form").addEventListener("submit", showresponse);
+    });
+    function showresponse(event) {
+        // prevents fast auto hidding
+        event.preventDefault();
+        // Gets, trim and save values in variable using id
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        let radios = document.getElementsByName('radios');
+        // To store value that is checked from the list of elements having same name 'radios'
+        let selected_gender = '';
+        for (let i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                // The below code takes the values from eg: value="[MALE]"
+                selected_gender = radios[i].value;
+                // Once we get the check value and stored in the variable need to break the for loop
+                break;
+            }
+        }
+        const selectedcountry = document.getElementById("selectedcountry").value;
+        const showshere = document.getElementById("showshere");
+        const response = `Name: ${name}, Email: ${email}, Gender: ${selected_gender},
+        Country: ${selectedcountry} has been Provided✅`;
+        showshere.textContent = response;
+        // Closes after few seconds
+        setTimeout(()=>{
+            showshere.textContent = "";
+        }, 7000)
+    }
+</script>
+
+<body id = "_body">
+    <!-- Calls the changeMode function in the script tab -->
+     <div>
+        <button onclick="changeMode()" id = "changemode">Dark Mode</button>
+    </div>
+    
+    <form id = "form" action="">
+        <!-- Class added from google fonts to look nice😊 
+         class="wdxl-lubrifont-tc-regular"-->
+        <h2 class="wdxl-lubrifont-tc-regular">Registration Form</h2>
+        <label class="wdxl-lubrifont-tc-regular" for="">Name👉</label>
+        <input id = "name" type="text" required>
+
+        <br><br>
+        <label class="wdxl-lubrifont-tc-regular" for="">Email📧</label>
+        <input id = "email" type="email" required>
+
+        <br><br>
+        <label class="wdxl-lubrifont-tc-regular" for="">Password🧑‍💻</label>
+        <input id = "password" type="password" required>
+
+        <br><br>
+        <label class="wdxl-lubrifont-tc-regular" for="">Gender<br>
+            <div style="padding: 0px 0px 0px 20px;">
+                <!-- name provided for using in for loop
+                 value is provided to deliver the value in the for loop in style -->
+                ♂️ Male<input name="radios" value="[MALE]" style="cursor: pointer;" type="radio">
+                <!-- Checked for by default value -->
+                ♀️ Female<input name="radios" value="[FEMALE]" style="cursor: pointer;" type="radio" checked>
+            </div>
+        </label>
+        
+        <br>
+        <label class="wdxl-lubrifont-tc-regular" for="">Country🚩</label>
+        <select name="" id="selectedcountry">
+            <!-- making the values as capital to not get confused
+             and can be taken by for loop in script and print it in output -->
+            <option value="INDIA">India</option>
+            <option value="RUSSIA">Russia</option>
+            <option value="AFRICA">Africa</option>
+            <option value="JAPAN">Japan</option>
+            <option value="CHINA">China</option>
+            <option value="OTHERS">Others</option>
+        </select>
+
+        <br><br>
+        <label class="wdxl-lubrifont-tc-regular" for="">
+            <!-- Made the cursor to pointer to note that we can be clickable -->
+            <input style="cursor: pointer;" type="checkbox">Accept Terms
+        </label>
+
+        <br><br><br>
+        <div id="submit">
+            <input class="wdxl-lubrifont-tc-regular" type="submit">
+        </div>
+    </form>
+    
+    <div id="showshere"></div>
+</body>
+</html>
