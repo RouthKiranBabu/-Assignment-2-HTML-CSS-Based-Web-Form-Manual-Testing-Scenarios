@@ -7,5 +7,6 @@
     ├── style.css
 </pre>
 # 🛠️ Build commands
- - No Build Command needed. Open the Registration form by opening the html file(index.html).
+> [!TIP]
+> No Build Command needed. Open the Registration form by opening the html file(index.html).
 # ✅ A brief description of functionalities
