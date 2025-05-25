@@ -52,6 +52,9 @@ where ever you add this class its makes it fonts style */
 }
 
 #showshere{
-    text-align: center; padding: 100px;
-    
+    text-align: center; padding: 70px; 
+    color: Orange;
+    font-weight: bold;
+    font-size: 30px;
+    text-shadow: rgba(3, 231, 235, 0.5) 0px 20px 30px;
 }
